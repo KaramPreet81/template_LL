@@ -1,6 +1,6 @@
 
 
-
+#include<vector>
 #include <iostream>
 #include <stdio.h>
 using namespace std;
@@ -231,8 +231,37 @@ class Solution
             }
         }
     };
-    
-    
+  class array{
+   	private:
+		vector<T> myarray ; 
+
+	public:
+		
+		array() {} 
+        	array(int size , T value) : myarray(size , value ){}	
+	void insert(T data)
+	{
+		myarray.push_back(data);
+	}	
+	void deleteArray(T data)
+	{
+		for(int i= 0 ; i< myarray.size() ; i++ )
+		{
+			if(myarray[i] == data)
+			{
+				myarray.erase(myarray.begin() + i ) ;
+			}
+		}
+
+	}
+
+	void travelarray(){
+		for( auto& it : myarray)
+		{
+			cout<< it << " " ;
+		}
+	}
+  };
 };
 
 
@@ -269,5 +298,16 @@ int main ()
   list3.InsertCLL(4);
   list3.Deleteatend();
   list3.printCLL() ;
+ cout<< endl ; 
+  Solution<int>::array array1(1,4);
+  array1.insert(1);
+  array1.insert(2) ;
+  array1.insert(3) ;
+  array1.insert(5);
+  array1.deleteArray(3) ;
+  array1.travelarray() ; 
+  
+  
   return 0;
+
 }
