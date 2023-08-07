@@ -262,6 +262,40 @@ class Solution
 		}
 	}
   };
+    class Stack{
+        public:
+                Nodesingle *top ;
+                Stack() : top(NULL) {} ;
+
+        void insertStack(T data){
+                Nodesingle *temp = new Nodesingle ;
+                if(!temp)
+                {
+                cout<< "stack overflow" << endl ;
+                exit(1) ;
+                }
+                else
+                {
+                        temp->val = data ;
+                        temp->next = top ;
+                        top = temp ;
+                }
+        }
+        T popStack(){
+                if(!top)
+                {
+                        cout<< "stack is empty " << endl ;
+                        exit(1) ;
+                }
+                else{
+                        cout<< top->val << " " ;
+                        top = top->next ;
+                }
+        }
+
+    };
+
+
 };
 
 
@@ -306,6 +340,15 @@ int main ()
   array1.insert(5);
   array1.deleteArray(3) ;
   array1.travelarray() ; 
+  cout<<endl ; 
+  Solution<int>::Stack stack1 ;
+  stack1.insertStack(2) ;
+  stack1.insertStack(1) ;
+  stack1.insertStack(5) ;
+  stack1.insertStack(3) ;
+  stack1.popStack() ;
+  stack1.popStack() ;
+
   
   
   return 0;
