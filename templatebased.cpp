@@ -231,70 +231,83 @@ class Solution
             }
         }
     };
-  class array{
-   	private:
-		vector<T> myarray ; 
+class MyArray {
+private:
+    T* data;
+    int size;
+    int capacity;
 
-	public:
-		
-		array() {} 
-        	array(int size , T value) : myarray(size , value ){}	
-	void insert(T data)
-	{
-		myarray.push_back(data);
-	}	
-	void deleteArray(T data)
-	{
-		for(int i= 0 ; i< myarray.size() ; i++ )
-		{
-			if(myarray[i] == data)
-			{
-				myarray.erase(myarray.begin() + i ) ;
-			}
-		}
+public:
+    MyArray() : data(nullptr), size(0), capacity(0) {}
 
-	}
+    MyArray(int initialCapacity) : data(new T[initialCapacity]), size(0), capacity(initialCapacity) {}
 
-	void travelarray(){
-		for( auto& it : myarray)
-		{
-			cout<< it << " " ;
-		}
-	}
-  };
-    class Stack{
-        public:
-                Nodesingle *top ;
-                Stack() : top(NULL) {} ;
+    ~MyArray() {
+        delete[] data;
+    }
 
-        void insertStack(T data){
-                Nodesingle *temp = new Nodesingle ;
-                if(!temp)
-                {
-                cout<< "stack overflow" << endl ;
-                exit(1) ;
-                }
-                else
-                {
-                        temp->val = data ;
-                        temp->next = top ;
-                        top = temp ;
-                }
-        }
-        T popStack(){
-                if(!top)
-                {
-                        cout<< "stack is empty " << endl ;
-                        exit(1) ;
-                }
-                else{
-                        cout<< top->val << " " ;
-                        top = top->next ;
-                }
+    void insert(T value) {
+        if (size == capacity) {
+            // Double the capacity if the array is full
+            int newCapacity = capacity == 0 ? 1 : capacity * 2;
+            T* newData = new T[newCapacity];
+
+            // Copy elements from the old array to the new array
+            for (int i = 0; i < size; ++i) {
+                newData[i] = data[i];
+            }
+
+            // Delete the old array and update data and capacity
+            delete[] data;
+            data = newData;
+            capacity = newCapacity;
         }
 
-    };
+        // Insert the new element and increase the size
+        data[size] = value;
+        ++size;
+    }
 
+    void remove(T value) {
+        int index = -1;
+        for (int i = 0; i < size; ++i) {
+            if (data[i] == value) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            // Shift elements to the left to overwrite the removed element
+            for (int i = index; i < size - 1; ++i) {
+                data[i] = data[i + 1];
+            }
+            // Decrease the size after removing the element
+            --size;
+        }
+    }
+
+    void print() const {
+        for (int i = 0; i < size; ++i) {
+            std::cout << data[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+    void pop() {
+        if (size > 0) {
+            --size;
+        }
+    }
+    void deque()
+    {
+        int index = 0 ; 
+        if(index < size)
+        {
+            cout << data[index] ; 
+        }
+        size--  ; 
+    }
+};
 
 };
 
@@ -333,21 +346,14 @@ int main ()
   list3.Deleteatend();
   list3.printCLL() ;
  cout<< endl ; 
-  Solution<int>::array array1(1,4);
-  array1.insert(1);
-  array1.insert(2) ;
-  array1.insert(3) ;
-  array1.insert(5);
-  array1.deleteArray(3) ;
-  array1.travelarray() ; 
-  cout<<endl ; 
-  Solution<int>::Stack stack1 ;
-  stack1.insertStack(2) ;
-  stack1.insertStack(1) ;
-  stack1.insertStack(5) ;
-  stack1.insertStack(3) ;
-  stack1.popStack() ;
-  stack1.popStack() ;
+
+ Solution<int>::MyArray array1 ; 
+ array1.insert(1) ; 
+ array1.insert(4) ; 
+ array1.insert(2) ; 
+ array1.insert(3) ; 
+ array1.remove(4) ; 
+ array1.print() ; 
 
   
   
