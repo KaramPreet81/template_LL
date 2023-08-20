@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stdio.h> 
 
+using namespace std ; 
 template<typename T>
 class MyArray {
 private:
@@ -76,7 +77,7 @@ public:
         int index = 0 ; 
         if(index < size)
         {
-            cout << data[index] ; 
+            std::cout<< data[index] ; 
         }
         size--  ; 
     }
