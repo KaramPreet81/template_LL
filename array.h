@@ -8,8 +8,6 @@ using namespace std ;
 template <typename T>
 class Solution{
 public:    
-
-
 class MyArray {
 private:
     T* data;

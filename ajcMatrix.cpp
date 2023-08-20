@@ -1,14 +1,13 @@
-
 #include "single.h"
 
 template<typename T>
 class Graph {
 public:
-    typename Solution<T>::Linkedlist *adjList;
+    typename Solution<T>::Linkedlist *adjList; // Use typename here
     int vertices;
 
     Graph(int v) : vertices(v) {
-        adjList = new typename Solution<T>::Linkedlist[vertices];
+        adjList = new typename Solution<T>::Linkedlist[vertices]; // Use typename here
     }
 
     void addEdge(int source, int destination) {
@@ -25,8 +24,8 @@ public:
 
         visited[startVertex] = true;
         std::cout << startVertex << " ";
+        queue = adjList[startVertex].head;
 
-        typename Solution<T>::Nodesingle *startNode = adjList[startVertex].head;
         while (queue != nullptr) {
             int currentVertex = queue->val;
             queue = queue->next;
@@ -38,12 +37,49 @@ public:
                     std::cout << temp->val << " ";
                     typename Solution<T>::Nodesingle *newNode = new typename Solution<T>::Nodesingle;
                     newNode->val = temp->val;
-                    newNode->next = queue;
-                    queue = newNode;
+                    newNode->next = nullptr;
+
+                    if (queue == nullptr) {
+                        queue = newNode;
+                    } else {
+                        typename Solution<T>::Nodesingle *tempQueue = queue;
+                        while (tempQueue->next != nullptr) {
+                            tempQueue = tempQueue->next;
+                        }
+                        tempQueue->next = newNode;
+                    }
                 }
                 temp = temp->next;
             }
         }
+    }
+
+    void dfsTraversal(int startVertex, bool *visited) {
+        std::cout << startVertex << " ";
+        visited[startVertex] = true;
+
+        Solution<int>::Nodesingle *temp = adjList[startVertex].head;
+        while (temp) {
+            int neighbor = temp->val;
+            if (!visited[neighbor]) {
+                dfsTraversal(neighbor, visited);
+            }
+             
+            temp = temp->next;
+        }
+    }
+
+    void performDFS(int startVertex) {
+        bool *visited = new bool[vertices];
+        for (int i = 0; i < vertices; ++i) {
+            visited[i] = false;
+        }
+
+        std::cout << "DFS Traversal starting from vertex " << startVertex << ": ";
+        dfsTraversal(startVertex, visited);
+        std::cout << std::endl;
+
+        delete[] visited;
     }
 };
 
@@ -62,6 +98,8 @@ int main() {
     int startVertex = 0;
     std::cout << "BFS Traversal starting from vertex " << startVertex << ": ";
     g.bfsTraversal(startVertex);
+    cout<<endl ; 
+    g.performDFS(startVertex) ;
 
     return 0;
 }

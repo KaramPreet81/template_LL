@@ -1,4 +1,4 @@
- #ifndef SINGLE.H
+#ifndef SINGLE.H
  #define SINGLE.H
  #include<iostream>
  #include<stdio.h>
@@ -244,4 +244,4 @@
     };
  };
 
- #endif    
+ #endif
