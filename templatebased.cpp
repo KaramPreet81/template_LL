@@ -97,6 +97,16 @@ class Solution
         previous->next = temp->next ; 
         delete temp , previous ; 
     }
+    bool isEmpty() {
+        return head == nullptr;
+    }
+
+    T front() {
+        if (isEmpty()) {
+            throw std::runtime_error("Linked list is empty");
+        }
+        return head->val;
+    }
     
   };
   class NodeDoubly{
