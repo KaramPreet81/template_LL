@@ -12,7 +12,7 @@ int main(){
 	q1.DelnodeAtend() ;
 	q1.print() ;
 
-	Solution<int>::MyArray qa2 ; 
+	Solution<int>::MyArray qa1 ; 
 	qa1.insert(10) ; 
 	qa1.insert(20) ; 
 	qa1.insert(30) ; 

@@ -1,8 +1,14 @@
- #include<stdio.h>
+ #ifndef SINGLE.H
+ #define SINGLE.H
  #include<iostream>
-
+ #include<stdio.h>
+ 
+ using namespace std ; 
 
  template<typename T>
+ class Solution{ 
+ public:
+
  class Nodesingle
   {
   public:
@@ -12,7 +18,6 @@
      Nodesingle() : val(NULL),next(NULL)  {};
   };
 
-  template<typename T>
   class Linkedlist
   {
   public:
@@ -58,7 +63,7 @@
     Nodesingle *temp = head;
     while(temp)
 	    {
-	        cout << temp->val << " ";
+	        std::cout << temp->val << " ";
 	        temp = temp->next;
 	    }
 
@@ -106,8 +111,6 @@
     }
     
   };
-
-  tempalte<typename T>
   class NodeDoubly{
     public:
         NodeDoubly* prev ;
@@ -161,7 +164,7 @@
        NodeDoubly* temp = head ; 
        while(temp)
        {
-           cout<<temp->val<< " " ;
+           std::cout << temp->val<< " " ;
            temp = temp->next ; 
         }
        
@@ -185,8 +188,6 @@
     }
    
  };
- 
- template<typename T>
  class CircularLL{
       public:
       Nodesingle* head ; 
@@ -241,3 +242,6 @@
             }
         }
     };
+ };
+
+ #endif    

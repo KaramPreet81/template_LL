@@ -1,8 +1,15 @@
+#ifndef ARRAY.H
+#define ARRAY.H
+
 #include<iostream>
 #include<stdio.h> 
 
-using namespace std ; 
-template<typename T>
+using namespace std ;
+template <typename T>
+class Solution{
+public:    
+
+
 class MyArray {
 private:
     T* data;
@@ -82,3 +89,8 @@ public:
         size--  ; 
     }
 };
+
+
+};
+
+#endif  
