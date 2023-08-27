@@ -1,13 +1,9 @@
-#ifndef ARRAY.H
-#define ARRAY.H
+#ifndef ARRAY_H
+#define ARRAY_H
 
-#include<iostream>
-#include<stdio.h> 
+#include <iostream>
 
-using namespace std ;
 template <typename T>
-class Solution{
-public:    
 class MyArray {
 private:
     T* data;
@@ -77,18 +73,29 @@ public:
         }
     }
 
-    void deque()
-    {
-        int index = 0 ; 
-        if(index < size)
-        {
-            std::cout<< data[index] ; 
+    void deque() {
+        if (size > 0) {
+            for (int i = 0; i < size - 1; ++i) {
+                data[i] = data[i + 1];
+            }
+            --size;
         }
-        size--  ; 
+    }
+
+    int getSize() const {
+        return size;
+    }
+
+    T getElementAt(int index) const {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index out of range");
+        }
+        return data[index];
+    }
+
+    bool isEmpty() const {
+        return size == 0;
     }
 };
 
-
-};
-
-#endif  
+#endif
