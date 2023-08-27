@@ -4,6 +4,8 @@
 #include <iostream>
 
 template <typename T>
+class Solution{
+    public:
 class MyArray {
 private:
     T* data;
@@ -25,18 +27,16 @@ public:
             int newCapacity = capacity == 0 ? 1 : capacity * 2;
             T* newData = new T[newCapacity];
 
-            // Copy elements from the old array to the new array
+           
             for (int i = 0; i < size; ++i) {
                 newData[i] = data[i];
             }
-
-            // Delete the old array and update data and capacity
             delete[] data;
             data = newData;
             capacity = newCapacity;
         }
 
-        // Insert the new element and increase the size
+        
         data[size] = value;
         ++size;
     }
@@ -51,11 +51,10 @@ public:
         }
 
         if (index != -1) {
-            // Shift elements to the left to overwrite the removed element
             for (int i = index; i < size - 1; ++i) {
                 data[i] = data[i + 1];
             }
-            // Decrease the size after removing the element
+            
             --size;
         }
     }
@@ -96,6 +95,7 @@ public:
     bool isEmpty() const {
         return size == 0;
     }
+};
 };
 
 #endif
