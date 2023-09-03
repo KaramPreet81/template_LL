@@ -1,6 +1,3 @@
-
-
-#include<vector>
 #include <iostream>
 #include <stdio.h>
 using namespace std;
@@ -324,49 +321,3 @@ public:
 
 
 
-
-int main ()
-{
-  
-  Solution<int>::Linkedlist list1;
-  list1.InsertEnd(1);
-  list1.InsertEnd(4);
-  list1.InsertEnd(2);
-  list1.InsertEnd(3);
-  list1.Insertbegin(5);
-  list1.Insertbegin(7);
-  list1.DelnodeAtend();
-  list1.Delwithdata(1) ;
-  list1.print();
-  cout<<endl ;
-
-  Solution<int>::Dlinkedlist list2;
-  list2.insertendDLL(3);
-  list2.insertendDLL(4);
-  list2.insertbeginDLL(1);
-  list2.insertbeginDLL(2);
-  list2.deleteEndDLL();
-  list2.travelDLL() ;
-  cout<<endl ;  
-  Solution<int>::CircularLL list3;
-  list3.InsertCLL(3);
-  list3.InsertCLL(1);
-  list3.InsertCLL(2);
-  list3.InsertCLL(4);
-  list3.Deleteatend();
-  list3.printCLL() ;
- cout<< endl ; 
-
- Solution<int>::MyArray array1 ; 
- array1.insert(1) ; 
- array1.insert(4) ; 
- array1.insert(2) ; 
- array1.insert(3) ; 
- array1.remove(4) ; 
- array1.print() ; 
-
-  
-  
-  return 0;
-
-}

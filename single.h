@@ -1,8 +1,7 @@
 #ifndef SINGLE.H
- #define SINGLE.H
- #include<iostream>
- #include<stdio.h>
- 
+#define SINGLE.H
+#include<iostream>
+
  using namespace std ; 
 
  template<typename T>
